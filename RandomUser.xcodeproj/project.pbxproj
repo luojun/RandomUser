@@ -18,6 +18,8 @@
 		BF6B16231972FF7E0056EE5B /* CoreDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B16201972FF7E0056EE5B /* CoreDataFetcher.m */; };
 		BF6B16241972FF7E0056EE5B /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B16221972FF7E0056EE5B /* CoreDataHelper.m */; };
 		BF6B1627197301780056EE5B /* RandomUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1625197301780056EE5B /* RandomUser.xcdatamodeld */; };
+		BF6B162C19730A540056EE5B /* RandomUserAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B162B19730A540056EE5B /* RandomUserAPIClient.m */; };
+		BF6B162F19730DE80056EE5B /* RandomUserProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B162E19730DE80056EE5B /* RandomUserProcessor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		BF6B16221972FF7E0056EE5B /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		BF6B1626197301780056EE5B /* RandomUser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RandomUser.xcdatamodel; sourceTree = "<group>"; };
 		BF6B1628197305950056EE5B /* RandomUserModelConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomUserModelConfig.h; sourceTree = "<group>"; };
+		BF6B162A19730A540056EE5B /* RandomUserAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomUserAPIClient.h; sourceTree = "<group>"; };
+		BF6B162B19730A540056EE5B /* RandomUserAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomUserAPIClient.m; sourceTree = "<group>"; };
+		BF6B162D19730DE80056EE5B /* RandomUserProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomUserProcessor.h; sourceTree = "<group>"; };
+		BF6B162E19730DE80056EE5B /* RandomUserProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomUserProcessor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +91,9 @@
 		BF1E23B71972F6E300E05731 = {
 			isa = PBXGroup;
 			children = (
+				BF6B161E1972FE800056EE5B /* CoreDataUtils */,
 				BF1E23C21972F6E300E05731 /* RandomUser */,
 				BF1E23DC1972F6E300E05731 /* RandomUserTests */,
-				BF6B161E1972FE800056EE5B /* CoreDataUtils */,
 				9CF0E007A6B446C2AB0CB2D4 /* Pods.xcconfig */,
 				264880B702AF4A19A5895B32 /* Frameworks */,
 				BF1E23C11972F6E300E05731 /* Products */,
@@ -106,6 +112,7 @@
 		BF1E23C21972F6E300E05731 /* RandomUser */ = {
 			isa = PBXGroup;
 			children = (
+				BF6B1629197308850056EE5B /* APIUtil */,
 				BF6B16151972FA280056EE5B /* Model */,
 				BF6B16161972FA430056EE5B /* Views */,
 				BF6B16171972FA600056EE5B /* ViewControllers */,
@@ -149,6 +156,8 @@
 			children = (
 				BF6B1625197301780056EE5B /* RandomUser.xcdatamodeld */,
 				BF6B1628197305950056EE5B /* RandomUserModelConfig.h */,
+				BF6B162D19730DE80056EE5B /* RandomUserProcessor.h */,
+				BF6B162E19730DE80056EE5B /* RandomUserProcessor.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +189,15 @@
 				BF6B16221972FF7E0056EE5B /* CoreDataHelper.m */,
 			);
 			path = CoreDataUtils;
+			sourceTree = "<group>";
+		};
+		BF6B1629197308850056EE5B /* APIUtil */ = {
+			isa = PBXGroup;
+			children = (
+				BF6B162A19730A540056EE5B /* RandomUserAPIClient.h */,
+				BF6B162B19730A540056EE5B /* RandomUserAPIClient.m */,
+			);
+			path = APIUtil;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,8 +335,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF6B16241972FF7E0056EE5B /* CoreDataHelper.m in Sources */,
+				BF6B162C19730A540056EE5B /* RandomUserAPIClient.m in Sources */,
 				BF6B16231972FF7E0056EE5B /* CoreDataFetcher.m in Sources */,
 				BF6B1627197301780056EE5B /* RandomUser.xcdatamodeld in Sources */,
+				BF6B162F19730DE80056EE5B /* RandomUserProcessor.m in Sources */,
 				BF1E23C91972F6E300E05731 /* AppDelegate.m in Sources */,
 				BF6B161D1972FA9D0056EE5B /* UserListViewController.m in Sources */,
 				BF6B161C1972FA9D0056EE5B /* UserDetailViewController.m in Sources */,

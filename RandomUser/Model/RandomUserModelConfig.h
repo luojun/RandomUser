@@ -9,10 +9,13 @@
 #define kRandomUserModel @"RandomUser"
 #define kRandomUserStore @"RandomUser.sqlite"
 
+#define kRUMUserEntity @"User"
+
 #define kRUMAddress @"address"
 #define kRUMCell @"cell"
 #define kRUMEmail @"email"
 #define kRUMGender @"gender"
 #define kRUMName @"name"
+#define kRUMPhone @"phone"
 #define kRUMPicture @"picture"
-#define kRUMTitle @"registered"
+#define kRUMRegistered @"registered"
