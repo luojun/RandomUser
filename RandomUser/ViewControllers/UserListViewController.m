@@ -59,9 +59,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
-        [(UserDetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
+        [(UserDetailViewController *)[[segue destinationViewController] topViewController] setUserObject:self.fetcher.selectedObject];
     }
 }
 

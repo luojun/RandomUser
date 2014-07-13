@@ -10,16 +10,18 @@
 
 @interface UserDetailViewController ()
 
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
 @end
 
 @implementation UserDetailViewController
             
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+- (void)setUserObject:(NSManagedObject *)newUserObject {
+    if (_userObject != newUserObject) {
+        _userObject = newUserObject;
             
         // Update the view.
         [self configureView];
@@ -31,21 +33,27 @@
 }
 
 - (void)configureView {
-    // Update the user interface for the detail item.
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
+    UILabel *userNameView = (UILabel *) [self.contentView viewWithTag:1];
+    userNameView.text = [[self.userObject valueForKey:@"name"] description];
+    UILabel *userCellView = (UILabel *) [self.contentView viewWithTag:4];
+    userCellView.text = [[self.userObject valueForKey:@"cell"] description];
+    UILabel *userEmailView = (UILabel *) [self.contentView viewWithTag:5];
+    userEmailView.text = [[self.userObject valueForKey:@"email"] description];
+
+    UIImageView *pictureView = (UIImageView *) [self.contentView viewWithTag:2];
+    NSURL *imageURL = [NSURL URLWithString:[self.userObject valueForKey:@"picture"]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            pictureView.image = [UIImage imageWithData:imageData];
+        });
+    });
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Split view
