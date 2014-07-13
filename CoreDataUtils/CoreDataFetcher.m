@@ -50,13 +50,7 @@
 
 - (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.delegate deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-    }
+    return NO;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate

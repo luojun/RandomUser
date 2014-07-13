@@ -12,7 +12,6 @@
 @protocol CoreDataFetcherDelegate
 
 - (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object;
-- (void)deleteObject:(NSManagedObject *)object;
 
 @end
 

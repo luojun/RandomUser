@@ -11,6 +11,7 @@
 #import "CoreDataFetcher.h"
 #import "CoreDataHelper.h"
 #import "RandomUserAPIClient.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface UserListViewController () <CoreDataFetcherDelegate>
 
@@ -68,15 +69,19 @@
 - (void)configureCell:(UITableViewCell *)cell withObject:(id)object
 {
     UILabel *userNameView = (UILabel *) [cell.contentView viewWithTag:1];
-    UIImageView *pictureView = (UIImageView *) [cell.contentView viewWithTag:2];
     userNameView.text = [[object valueForKey:@"name"] description];
+
+    UIImageView *pictureView = (UIImageView *) [cell.contentView viewWithTag:2];
     NSURL *imageURL = [NSURL URLWithString:[object valueForKey:@"picture"]];
+    [pictureView setImageWithURL:imageURL];
+    /*
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
         dispatch_async(dispatch_get_main_queue(), ^{
             pictureView.image = [UIImage imageWithData:imageData];
         });
     });
+     */
 }
 
 #pragma mark - fetched results controller

@@ -7,6 +7,7 @@
 //
 
 #import "UserDetailViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface UserDetailViewController ()
 
@@ -42,12 +43,7 @@
 
     UIImageView *pictureView = (UIImageView *) [self.contentView viewWithTag:2];
     NSURL *imageURL = [NSURL URLWithString:[self.userObject valueForKey:@"picture"]];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            pictureView.image = [UIImage imageWithData:imageData];
-        });
-    });
+    [pictureView setImageWithURL:imageURL];
 }
 
 - (void)viewDidLoad {
