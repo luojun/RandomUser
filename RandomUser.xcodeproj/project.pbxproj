@@ -17,6 +17,7 @@
 		BF6B161D1972FA9D0056EE5B /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B161B1972FA9D0056EE5B /* UserListViewController.m */; };
 		BF6B16231972FF7E0056EE5B /* CoreDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B16201972FF7E0056EE5B /* CoreDataFetcher.m */; };
 		BF6B16241972FF7E0056EE5B /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B16221972FF7E0056EE5B /* CoreDataHelper.m */; };
+		BF6B1627197301780056EE5B /* RandomUser.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF6B1625197301780056EE5B /* RandomUser.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		BF6B16201972FF7E0056EE5B /* CoreDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataFetcher.m; sourceTree = "<group>"; };
 		BF6B16211972FF7E0056EE5B /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		BF6B16221972FF7E0056EE5B /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		BF6B1626197301780056EE5B /* RandomUser.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RandomUser.xcdatamodel; sourceTree = "<group>"; };
+		BF6B1628197305950056EE5B /* RandomUserModelConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomUserModelConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 		BF6B16151972FA280056EE5B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF6B1625197301780056EE5B /* RandomUser.xcdatamodeld */,
+				BF6B1628197305950056EE5B /* RandomUserModelConfig.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			files = (
 				BF6B16241972FF7E0056EE5B /* CoreDataHelper.m in Sources */,
 				BF6B16231972FF7E0056EE5B /* CoreDataFetcher.m in Sources */,
+				BF6B1627197301780056EE5B /* RandomUser.xcdatamodeld in Sources */,
 				BF1E23C91972F6E300E05731 /* AppDelegate.m in Sources */,
 				BF6B161D1972FA9D0056EE5B /* UserListViewController.m in Sources */,
 				BF6B161C1972FA9D0056EE5B /* UserDetailViewController.m in Sources */,
@@ -517,6 +523,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BF6B1625197301780056EE5B /* RandomUser.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BF6B1626197301780056EE5B /* RandomUser.xcdatamodel */,
+			);
+			currentVersion = BF6B1626197301780056EE5B /* RandomUser.xcdatamodel */;
+			path = RandomUser.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BF1E23B81972F6E300E05731 /* Project object */;
 }
