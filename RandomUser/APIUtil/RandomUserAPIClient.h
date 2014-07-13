@@ -11,5 +11,6 @@
 @interface RandomUserAPIClient : AFHTTPSessionManager
 
 + (instancetype)sharedClient;
++ (NSURLSessionDataTask *)requestRandomUserWithBlock:(void (^)(NSError *error))block;
 
 @end

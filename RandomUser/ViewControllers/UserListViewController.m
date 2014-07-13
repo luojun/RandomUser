@@ -8,10 +8,15 @@
 
 #import "UserListViewController.h"
 #import "UserDetailViewController.h"
+#import "CoreDataFetcher.h"
+#import "CoreDataHelper.h"
+#import "RandomUserAPIClient.h"
 
-@interface UserListViewController ()
+@interface UserListViewController () <CoreDataFetcherDelegate>
 
+@property (nonatomic, strong) CoreDataFetcher* fetcher;
 @property NSMutableArray *objects;
+
 @end
 
 @implementation UserListViewController
@@ -26,26 +31,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewUser:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.UserDetailViewController = (UserDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+
+    [self setupFetcher];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - set up
+
+- (void)setupFetcher
+{
+    self.fetcher = [[CoreDataFetcher alloc] initWithTableView:self.tableView];
+    self.fetcher.fetchedResultsController = self.fetchedResultsController;
+    self.fetcher.delegate = self;
+    self.fetcher.reuseIdentifier = @"Cell";
 }
 
-- (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+#pragma mark - Random User
+
+- (void)addNewUser:(id)sender {
+    [RandomUserAPIClient requestRandomUserWithBlock:nil];
 }
 
 #pragma mark - Segues
@@ -58,43 +65,46 @@
     }
 }
 
-#pragma mark - Table View
+#pragma mark - fetcher delegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+- (void)configureCell:(UITableViewCell *)cell withObject:(id)object
+{
+    UILabel *userNameView = (UILabel *) [cell.contentView viewWithTag:1];
+    UIImageView *pictureView = (UIImageView *) [cell.contentView viewWithTag:2];
+    userNameView.text = [[object valueForKey:@"name"] description];
+    NSURL *imageURL = [NSURL URLWithString:[object valueForKey:@"picture"]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            pictureView.image = [UIImage imageWithData:imageData];
+        });
+    });
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
-}
+#pragma mark - fetched results controller
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
-    return cell;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
     }
+    
+    NSManagedObjectContext *mainContext = [CoreDataHelper defaultMainContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:mainContext];
+    request.entity = entity;
+    request.fetchBatchSize = 20;
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    request.sortDescriptors = sortDescriptors;
+    
+    NSFetchedResultsController *controller = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:mainContext sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController = controller;
+    
+    return _fetchedResultsController;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSDate *object = self.objects[indexPath.row];
-        self.UserDetailViewController.detailItem = object;
-    }
-}
 
 @end

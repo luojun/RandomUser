@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @class UserDetailViewController;
 
-@interface UserListViewController : UITableViewController
+@interface UserListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) UserDetailViewController *UserDetailViewController;
-
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 

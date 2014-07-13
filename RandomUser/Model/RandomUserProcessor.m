@@ -42,10 +42,9 @@
 }
 
 + (NSString *)nameFromNameData:(NSDictionary *)nameData {
-    return [NSString stringWithFormat:@"%@ %@ %@",
-            [nameData valueForKey:@"title"],
+    return [NSString stringWithFormat:@"%@ %@",
             [nameData valueForKey:@"first"],
-            [nameData valueForKey:@"liast"]];
+            [nameData valueForKey:@"last"]];
 }
 
 + (NSString *)addressFromAddressData:(NSDictionary *)addressData {
@@ -53,7 +52,7 @@
             [addressData valueForKey:@"street"],
             [addressData valueForKey:@"city"],
             [addressData valueForKey:@"state"],
-            [addressData valueForKey:@"zipte"]];
+            [addressData valueForKey:@"zip"]];
 }
 
 @end

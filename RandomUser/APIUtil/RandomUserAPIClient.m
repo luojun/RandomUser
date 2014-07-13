@@ -28,7 +28,7 @@ static NSString * const RandomUserAPIBaseURLString = @"http://api.randomuser.me"
 }
 
 + (NSURLSessionDataTask *)requestRandomUserWithBlock:(void (^)(NSError *error))block {
-    return [[RandomUserAPIClient sharedClient] GET:nil parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
+    return [[RandomUserAPIClient sharedClient] GET:@"" parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
         NSDictionary *randomUserData = [[[JSON valueForKeyPath:@"results"] objectAtIndex:0] valueForKeyPath:@"user"];
         [RandomUserProcessor processData:randomUserData];
         if (block) {
