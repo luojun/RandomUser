@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		BF1E23C61972F6E300E05731 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1E23C51972F6E300E05731 /* main.m */; };
 		BF1E23C91972F6E300E05731 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1E23C81972F6E300E05731 /* AppDelegate.m */; };
-		BF1E23CC1972F6E300E05731 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1E23CB1972F6E300E05731 /* MasterViewController.m */; };
-		BF1E23CF1972F6E300E05731 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1E23CE1972F6E300E05731 /* DetailViewController.m */; };
 		BF1E23D21972F6E300E05731 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF1E23D01972F6E300E05731 /* Main.storyboard */; };
 		BF1E23D41972F6E300E05731 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF1E23D31972F6E300E05731 /* Images.xcassets */; };
 		BF1E23E01972F6E300E05731 /* RandomUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1E23DF1972F6E300E05731 /* RandomUserTests.m */; };
+		BF6B161C1972FA9D0056EE5B /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B16191972FA9D0056EE5B /* UserDetailViewController.m */; };
+		BF6B161D1972FA9D0056EE5B /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6B161B1972FA9D0056EE5B /* UserListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,15 +32,15 @@
 		BF1E23C51972F6E300E05731 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF1E23C71972F6E300E05731 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BF1E23C81972F6E300E05731 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BF1E23CA1972F6E300E05731 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		BF1E23CB1972F6E300E05731 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		BF1E23CD1972F6E300E05731 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		BF1E23CE1972F6E300E05731 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		BF1E23D11972F6E300E05731 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF1E23D31972F6E300E05731 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF1E23D91972F6E300E05731 /* RandomUserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomUserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1E23DE1972F6E300E05731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF1E23DF1972F6E300E05731 /* RandomUserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomUserTests.m; sourceTree = "<group>"; };
+		BF6B16181972FA9D0056EE5B /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
+		BF6B16191972FA9D0056EE5B /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		BF6B161A1972FA9D0056EE5B /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserListViewController.h; sourceTree = "<group>"; };
+		BF6B161B1972FA9D0056EE5B /* UserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,12 +82,11 @@
 		BF1E23C21972F6E300E05731 /* RandomUser */ = {
 			isa = PBXGroup;
 			children = (
+				BF6B16151972FA280056EE5B /* Model */,
+				BF6B16161972FA430056EE5B /* Views */,
+				BF6B16171972FA600056EE5B /* ViewControllers */,
 				BF1E23C71972F6E300E05731 /* AppDelegate.h */,
 				BF1E23C81972F6E300E05731 /* AppDelegate.m */,
-				BF1E23CA1972F6E300E05731 /* MasterViewController.h */,
-				BF1E23CB1972F6E300E05731 /* MasterViewController.m */,
-				BF1E23CD1972F6E300E05731 /* DetailViewController.h */,
-				BF1E23CE1972F6E300E05731 /* DetailViewController.m */,
 				BF1E23D01972F6E300E05731 /* Main.storyboard */,
 				BF1E23D31972F6E300E05731 /* Images.xcassets */,
 				BF1E23C31972F6E300E05731 /* Supporting Files */,
@@ -119,6 +118,31 @@
 				BF1E23DE1972F6E300E05731 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF6B16151972FA280056EE5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF6B16161972FA430056EE5B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF6B16171972FA600056EE5B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF6B16181972FA9D0056EE5B /* UserDetailViewController.h */,
+				BF6B16191972FA9D0056EE5B /* UserDetailViewController.m */,
+				BF6B161A1972FA9D0056EE5B /* UserListViewController.h */,
+				BF6B161B1972FA9D0056EE5B /* UserListViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,9 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF1E23C91972F6E300E05731 /* AppDelegate.m in Sources */,
-				BF1E23CC1972F6E300E05731 /* MasterViewController.m in Sources */,
+				BF6B161D1972FA9D0056EE5B /* UserListViewController.m in Sources */,
+				BF6B161C1972FA9D0056EE5B /* UserDetailViewController.m in Sources */,
 				BF1E23C61972F6E300E05731 /* main.m in Sources */,
-				BF1E23CF1972F6E300E05731 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +434,7 @@
 				BF1E23E51972F6E300E05731 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF1E23E61972F6E300E05731 /* Build configuration list for PBXNativeTarget "RandomUserTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +443,7 @@
 				BF1E23E81972F6E300E05731 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

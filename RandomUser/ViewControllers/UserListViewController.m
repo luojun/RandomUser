@@ -1,20 +1,20 @@
 //
-//  MasterViewController.m
+//  UserListViewController.m
 //  RandomUser
 //
 //  Created by Jun Luo on 2014-07-13.
 //  Copyright (c) 2014 Jun Luo. All rights reserved.
 //
 
-#import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "UserListViewController.h"
+#import "UserDetailViewController.h"
 
-@interface MasterViewController ()
+@interface UserListViewController ()
 
 @property NSMutableArray *objects;
 @end
 
-@implementation MasterViewController
+@implementation UserListViewController
             
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -31,7 +31,7 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.UserDetailViewController = (UserDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +54,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = self.objects[indexPath.row];
-        [(DetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
+        [(UserDetailViewController *)[[segue destinationViewController] topViewController] setDetailItem:object];
     }
 }
 
@@ -93,7 +93,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSDate *object = self.objects[indexPath.row];
-        self.detailViewController.detailItem = object;
+        self.UserDetailViewController.detailItem = object;
     }
 }
 

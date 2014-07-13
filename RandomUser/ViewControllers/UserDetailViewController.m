@@ -1,19 +1,19 @@
 //
-//  DetailViewController.m
+//  UserDetailViewController.m
 //  RandomUser
 //
 //  Created by Jun Luo on 2014-07-13.
 //  Copyright (c) 2014 Jun Luo. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "UserDetailViewController.h"
 
-@interface DetailViewController ()
+@interface UserDetailViewController ()
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @end
 
-@implementation DetailViewController
+@implementation UserDetailViewController
             
 #pragma mark - Managing the detail item
 
